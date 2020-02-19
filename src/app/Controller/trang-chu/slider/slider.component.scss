@@ -1,0 +1,68 @@
+.carousel {
+    padding-top: 70px;
+    &:hover {
+        .iconplay {
+            position: absolute;
+            top: 37%;
+            left: 50%;
+            opacity: 1;
+            padding-top: 17px;
+            i {
+                color: white;
+                font-size: 30px;
+                padding-left: 24px;
+                padding-top: 17px;
+                border: 2px solid white;
+                border-radius: 50%;
+                width: 70px;
+                height: 70px;
+                &:hover {
+                    transform: scale(0.9);
+                    transition: all 0.5s;
+                }
+            }
+        }
+    }
+    .carousel-indicators {
+        left: 5%;
+        li {
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+        }
+        .active {
+            background-color: red;
+        }
+    }
+    .iconplay {
+        position: absolute;
+        top: 37%;
+        left: 50%;
+        opacity: 0;
+    }
+    .carousel-control-next {
+        // background-image: url(../../../../assets/img/next-session.png);
+        i {
+            width: 50px;
+            height: 60px;
+            font-size: 80px;
+            position: absolute;
+            top: 50%;
+            right: 60%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+    }
+    .carousel-control-prev {
+        i {
+            width: 50px;
+            height: 60px;
+            font-size: 80px;
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+    }
+}
