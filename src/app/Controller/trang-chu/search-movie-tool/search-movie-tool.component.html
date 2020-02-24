@@ -1,0 +1,45 @@
+<div class="search-movie container">
+    <div class="search-movie__items">
+        <mat-form-field>
+            <mat-label>Phim</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="search-movie__items">
+        <mat-form-field>
+            <mat-label>Rạp</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="search-movie__items">
+        <mat-form-field>
+            <mat-label>Ngày xem</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="search-movie__items">
+        <mat-form-field>
+            <mat-label>Suất chiếu</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="search-movie__button">
+        <button mat-raised-button color="warn">MUA VÉ NGAY</button>
+    </div>
+</div>

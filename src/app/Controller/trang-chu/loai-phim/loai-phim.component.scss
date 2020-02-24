@@ -1,0 +1,24 @@
+.loaiPhim {
+    max-width: 940px;
+    margin-top: 80px;
+    height: 100%;
+    .--loaiPhim__title {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        button {
+            height: 53px;
+            padding-top: 11px;
+            background-color: #fff;
+            border: none;
+            &:focus {
+                border: none !important;
+                background-color: #fff;
+                outline: none !important;
+            }
+            h3 {
+                font-size: 30px;
+            }
+        }
+    }
+}

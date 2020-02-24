@@ -1,0 +1,57 @@
+.dienAnh__itemTop {
+    img {
+        width: 100%;
+        border-radius: 4px;
+    }
+    a {
+        text-decoration: none;
+        color: black
+    }
+    p {
+        font-weight: 500;
+        font-size: 17px;
+        padding-top: 17px;
+    }
+    span {
+        text-align: justify;
+        font-size: 13px;
+        color: #4a4a4a;
+    }
+}
+
+.dienAnh__itemBottom {
+    padding-top: 40px;
+    img {
+        width: 100%;
+        border-radius: 4px;
+    }
+    a {
+        text-decoration: none;
+        color: black
+    }
+    p {
+        font-weight: 500;
+        font-size: 17px;
+        padding-top: 17px;
+    }
+    span {
+        text-align: justify;
+        font-size: 13px;
+        color: #4a4a4a;
+    }
+    .dienAnh__itemBottom__right {
+        display: flex;
+        padding-bottom: 15px;
+        img {
+            width: 60px;
+            height: 60px;
+        }
+        p {
+            text-align: justify;
+            font-size: 13px;
+            color: #4a4a4a;
+            padding-top: 0px;
+            padding-left: 15px;
+        }
+    }
+}

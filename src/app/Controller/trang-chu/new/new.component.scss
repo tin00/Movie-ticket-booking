@@ -1,0 +1,19 @@
+.new {
+    .new__title {
+        margin: 60px 0px;
+        button {
+            height: 53px;
+            padding-top: 11px;
+            background-color: #fff;
+            border: none;
+            &:focus {
+                border: none !important;
+                background-color: #fff;
+                outline: none !important;
+            }
+            h3 {
+                font-size: 30px;
+            }
+        }
+    }
+}

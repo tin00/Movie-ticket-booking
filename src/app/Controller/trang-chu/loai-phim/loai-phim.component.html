@@ -1,1 +1,22 @@
-<p>loai-phim works!</p>
+<div class="container loaiPhim">
+    <div class="row">
+        <div class="col-12 text-center --loaiPhim__title">
+            <button [ngClass]="{'text-danger':dangChieuStatus}" class="mr-5" (click)="isMoving()">
+                <h3>Đang Chiếu</h3>
+            </button>
+            <button [ngClass]="{'text-danger':!dangChieuStatus}" (click)="willMoving()">
+                <h3>Sắp Chiếu</h3>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12" *ngIf="dangChieuStatus;else statusWillMoving">
+            <app-phim-dang-chieu></app-phim-dang-chieu>
+        </div>
+        <ng-template #statusWillMoving>
+            <div class="col-12">
+                <app-phim-sap-chieu></app-phim-sap-chieu>
+            </div>
+        </ng-template>
+    </div>
+</div>

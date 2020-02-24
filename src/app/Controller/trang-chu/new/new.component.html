@@ -1,0 +1,26 @@
+<div class="container new">
+    <div class="row">
+        <div class="col-12 text-center new__title">
+            <button [ngClass]="{'text-danger':loaiTinTuc==='DienAnh'}" (click)="chonLoaiTin('DienAnh')">
+                <h3>Điện ảnh 24h</h3>
+            </button>
+            <button [ngClass]="{'text-danger':loaiTinTuc==='ReView'}" class="mx-5" (click)="chonLoaiTin('ReView')">
+                <h3>Review</h3>
+            </button>
+            <button [ngClass]="{'text-danger':loaiTinTuc==='KhuyenMai'}" (click)="chonLoaiTin('KhuyenMai')">
+                <h3>Khuyến mãi</h3>
+            </button>
+        </div>
+    </div>
+    <div class="row" [ngSwitch]="loaiTinTuc">
+        <div class="col-12" *ngSwitchCase="'DienAnh'">
+            <app-dien-anh></app-dien-anh>
+        </div>
+        <div class="col-12" *ngSwitchCase="'ReView'">
+            <app-re-view></app-re-view>
+        </div>
+        <div class="col-12" *ngSwitchCase="'KhuyenMai'">
+            <app-khuyen-mai></app-khuyen-mai>
+        </div>
+    </div>
+</div>
