@@ -32,14 +32,17 @@
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "node_modules/font-awesome/css/font-awesome.min.css",
                             "src/assets/css/grt-youtube-popup.css",
-                            "node_modules/owl.carousel/dist/assets/owl.carousel.min.css"
+                            "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+                            "src/assets/css/slick-theme.css",
+                            "src/assets/css/slick.css"
                         ],
                         "scripts": [
                             "node_modules/jquery/dist/jquery.min.js",
                             "node_modules/popper.js/dist/umd/popper.min.js",
                             "node_modules/bootstrap/dist/js/bootstrap.min.js",
                             "src/assets/js/grt-youtube-popup.js",
-                            "node_modules/owl.carousel/dist/owl.carousel.min.js"
+                            "node_modules/owl.carousel/dist/owl.carousel.min.js",
+                            "src/assets/js/slick.min.js"
                         ]
                     },
                     "configurations": {

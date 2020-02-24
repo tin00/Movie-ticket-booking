@@ -1,0 +1,50 @@
+.detailMain {
+    padding-top: 70px;
+    .detailMain__background {
+        overflow: hidden;
+        filter: blur(15px);
+        margin: -11px 0 -5px -10px;
+        width: calc(100% + 5px);
+    }
+    .styleGradient {
+        background: linear-gradient(to top, rgb(10, 32, 41), transparent 100%);
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+    .detailMain__Title {
+        position: absolute;
+        top: 50%;
+        .detailMain__TitleItem {
+            transform: translateX(30%);
+            display: flex;
+            color: #fff;
+            top: -138px;
+            .detailMain__TitleItem__Content {
+                padding-left: 20px;
+                p {
+                    font-size: 14px;
+                    color: #e9e9e9;
+                }
+                h3 {
+                    font-size: 25px;
+                    color: #e9e9e9;
+                    font-weight: 500;
+                    line-height: 36px;
+                }
+                button {
+                    font-size: 16px;
+                    border-radius: 4px;
+                    text-align: center;
+                    outline: none;
+                    width: 125px;
+                    &:hover {
+                        background-color: #b42a14;
+                    }
+                }
+            }
+        }
+    }
+}

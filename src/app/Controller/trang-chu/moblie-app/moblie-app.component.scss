@@ -1,0 +1,50 @@
+.mobile {
+    .mobile__background {
+        background-image: url("../../../../assets/img/backapp.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        padding: 120px 0 80px 0;
+        .mobile__contentleft {
+            color: #fff;
+            float: right;
+            padding-left: 250px;
+            p {
+                font-size: medium;
+                padding: 14px 0px;
+            }
+            h2 {
+                font-weight: 700;
+                font-size: xx-large;
+                line-height: 50px;
+            }
+            a {
+                text-decoration: none;
+                border-bottom: solid 1px #fff;
+                color: white;
+            }
+            button {
+                width: 250px;
+                border-radius: 5px;
+                &:focus {
+                    border: none !important;
+                    outline: none !important;
+                }
+            }
+        }
+        .mobile__contentright {
+            .mobile__contentright--img {
+                padding: 0 28%;
+                width: 550px;
+                position: relative;
+            }
+            .carousel {
+                width: 171px;
+                position: absolute;
+                top: 9px;
+                left: 204px;
+            }
+        }
+    }
+}

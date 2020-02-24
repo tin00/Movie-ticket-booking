@@ -17,6 +17,7 @@ import { DienAnhComponent } from "./dien-anh/dien-anh.component";
 import { ReViewComponent } from "./re-view/re-view.component";
 import { KhuyenMaiComponent } from "./khuyen-mai/khuyen-mai.component";
 import { ItemNewComponent } from "./item-new/item-new.component";
+import { MoblieAppComponent } from './moblie-app/moblie-app.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ItemNewComponent } from "./item-new/item-new.component";
     DienAnhComponent,
     ReViewComponent,
     KhuyenMaiComponent,
-    ItemNewComponent
+    ItemNewComponent,
+    MoblieAppComponent
   ],
   imports: [
     CommonModule,
