@@ -1,22 +1,27 @@
 .detailMain {
     padding-top: 70px;
+    position: relative;
+    background-color: rgb(10, 32, 41);
+    overflow: hidden;
     .detailMain__background {
         overflow: hidden;
         filter: blur(15px);
         margin: -11px 0 -5px -10px;
         width: calc(100% + 5px);
     }
-    .styleGradient {
+    .styleGradientBottomlinearTop {
         background: linear-gradient(to top, rgb(10, 32, 41), transparent 100%);
-        top: 0;
+        top: 30px;
         left: 0;
         height: 100%;
         width: 100%;
         position: absolute;
     }
     .detailMain__Title {
+        left: 6%;
         position: absolute;
         top: 50%;
+        z-index: 1;
         .detailMain__TitleItem {
             transform: translateX(30%);
             display: flex;
@@ -46,5 +51,34 @@
                 }
             }
         }
+    }
+    .detailMain__button {
+        display: flex;
+        justify-content: center;
+        z-index: 1;
+        button {
+            height: 53px;
+            padding-top: 11px;
+            border: none;
+            background-color: rgb(10, 32, 41);
+            &:focus {
+                border: none !important;
+                background-color: rgb(10, 32, 41);
+                outline: none !important;
+            }
+            h3 {
+                font-size: 20px;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.bookTime {
+    background-color: rgb(10, 32, 41);
+    padding: 64px 0;
+    .bookTimeContent {
+        max-width: 940px;
+        background-color: white;
     }
 }

@@ -7,6 +7,7 @@ import { SliderComponent } from "./slider/slider.component";
 import { SearchMovieToolComponent } from "./search-movie-tool/search-movie-tool.component";
 import { MatSelectModule } from "@angular/material/select";
 import { MatButtonModule } from "@angular/material/button";
+
 import { PhimSapChieuComponent } from "./phim-sap-chieu/phim-sap-chieu.component";
 import { PhimDangChieuComponent } from "./phim-dang-chieu/phim-dang-chieu.component";
 import { ItemPhimComponent } from "./item-phim/item-phim.component";
@@ -18,7 +19,8 @@ import { ReViewComponent } from "./re-view/re-view.component";
 import { KhuyenMaiComponent } from "./khuyen-mai/khuyen-mai.component";
 import { ItemNewComponent } from "./item-new/item-new.component";
 import { MoblieAppComponent } from './moblie-app/moblie-app.component';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {RouterModule, Router} from "@angular/router"
 @NgModule({
   declarations: [
     LoaiPhimComponent,
@@ -34,15 +36,17 @@ import { MoblieAppComponent } from './moblie-app/moblie-app.component';
     ReViewComponent,
     KhuyenMaiComponent,
     ItemNewComponent,
-    MoblieAppComponent
+    MoblieAppComponent,
   ],
   imports: [
     CommonModule,
     ShareModule,
     MatSelectModule,
     MatButtonModule,
-    MatTabsModule
+    MatTabsModule,
+    NgbModule,
+    RouterModule
   ],
-  exports: [LayoutTrangChuComponent]
+  exports: [LayoutTrangChuComponent,RapPhimComponent]
 })
 export class TrangChuModule {}

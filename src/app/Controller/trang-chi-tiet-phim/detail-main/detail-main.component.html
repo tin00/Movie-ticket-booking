@@ -1,21 +1,45 @@
 <div class="detailMain">
     <div class="detailMain__background">
         <img src="../../../../assets/img/little-15816462985668.jpg" alt="">
-        <div class="styleGradient"></div>
     </div>
+    <!-- <div class="styleGradientToplinearBottom"></div> -->
     <div class="row container detailMain__Title">
         <div class="col-6 detailMain__TitleItem">
-            <img src="https://s3img.vcdn.vn/mobile/123phim/2020/02/so-thu-thoat-e-secret-zoo-c16-15807877612903_215x318.jpg" alt="">
+            <img [src]="movieDetail.hinhAnh" alt="">
             <div class="detailMain__TitleItem__Content">
-                <p>14.02.2020</p>
-                <h3>Sở thú thoát ế - Secret Zoo</h3>
+                <p>{{movieDetail.ngayKhoiChieu}}</p>
+                <h3>{{movieDetail.tenPhim}}</h3>
                 <p>117 phút - 0 IMDb - 2D/Digital</p>
                 <button mat-raised-button color="warn">Mua vé</button>
             </div>
         </div>
         <div class="col-6">
             <!-- <button mat-raised-button color="warn">Mua vé</button> -->
-
         </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center detailMain__button">
+            <button class="mr-5" [ngStyle]="{'color':inForPhim==='LichChieu'?'#fb4226':'#fff'}" (click)="chonInForPhim('LichChieu')">
+                <h3>Lịch Chiếu</h3>
+            </button>
+            <button class="mr-5" [ngStyle]="{'color':inForPhim==='ThongTin'?'#fb4226':'#fff'}" (click)="chonInForPhim('ThongTin')">
+                <h3>Thông Tin</h3>
+            </button>
+            <button [ngStyle]="{'color':inForPhim==='DanhGia'?'#fb4226':'#fff'}" (click)="chonInForPhim('DanhGia')">
+                <h3>Đánh Giá</h3>
+            </button>
+        </div>
+    </div>
+    <div class="styleGradientBottomlinearTop"></div>
+</div>
+<div class="bookTime" [ngSwitch]="inForPhim">
+    <div class="bookTimeContent container" *ngSwitchCase="'LichChieu'">
+        <app-lich-chieu></app-lich-chieu>
+    </div>
+    <div class="bookTimeContent container" *ngSwitchCase="'ThongTin'">
+        <app-thong-tin></app-thong-tin>
+    </div>
+    <div class="bookTimeContent container" *ngSwitchCase="'DanhGia'">
+        <app-danh-gia></app-danh-gia>
     </div>
 </div>

@@ -12,8 +12,8 @@ export class SliderComponent implements OnInit,AfterViewInit {
   constructor() { }
 
   ngOnInit(): void {
+    $(".youtube-link").grtyoutube();
   }
   ngAfterViewInit(){
-    $(".youtube-link").grtyoutube();
   }
 }

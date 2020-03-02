@@ -8,11 +8,11 @@ declare var $:any
 })
 export class PhimSapChieuComponent implements OnInit,AfterViewInit {
   DanhSachPhimSapChieu = [
-    {TenPhim:"Thor: Ragnarok",HinhAnh:'../../../assets/img/thor-ragnarok-15088151416399.jpg'},
-    {TenPhim:"Ferdinand",HinhAnh:'../../../assets/img/pokemon-to-chon-cau-pokemon-i-choose-you-15095249219579.jpg'},
-    {TenPhim:"Trùm Hương Cảng",HinhAnh:'../../../assets/img/trum-huong-cang-chasing-the-dragon-15088270130890.jpg'},
-    {TenPhim:"Ferdinand",HinhAnh:'../../../assets/img/ferdinand.jpg'},
-    {TenPhim:"Trải nghiệm điểm chết",HinhAnh:'../../../assets/img/trai-nghiem-diem-chet-flatliners-15093522963475.jpg'},
+    {tenPhim:"Thor: Ragnarok",hinhAnh:'../../../assets/img/thor-ragnarok-15088151416399.jpg'},
+    {tenPhim:"Ferdinand",hinhAnh:'../../../assets/img/pokemon-to-chon-cau-pokemon-i-choose-you-15095249219579.jpg'},
+    {tenPhim:"Trùm Hương Cảng",hinhAnh:'../../../assets/img/trum-huong-cang-chasing-the-dragon-15088270130890.jpg'},
+    {tenPhim:"Ferdinand",hinhAnh:'../../../assets/img/ferdinand.jpg'},
+    {tenPhim:"Trải nghiệm điểm chết",hinhAnh:'../../../assets/img/trai-nghiem-diem-chet-flatliners-15093522963475.jpg'},
   ];
 
   constructor() { }

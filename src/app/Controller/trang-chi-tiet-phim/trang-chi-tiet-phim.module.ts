@@ -4,10 +4,14 @@ import { LayoutChiTietPhimComponent } from "./layout-chi-tiet-phim/layout-chi-ti
 import { ShareModule } from "../share/share.module";
 import { DetailMainComponent } from "./detail-main/detail-main.component";
 import { MatButtonModule } from "@angular/material/button";
+import { TrangChuModule } from '../trang-chu/trang-chu.module';
+import { LichChieuComponent } from './lich-chieu/lich-chieu.component';
+import { ThongTinComponent } from './thong-tin/thong-tin.component';
+import { DanhGiaComponent } from './danh-gia/danh-gia.component';
 
 @NgModule({
-  declarations: [LayoutChiTietPhimComponent, DetailMainComponent],
-  imports: [CommonModule, ShareModule, MatButtonModule],
+  declarations: [LayoutChiTietPhimComponent, DetailMainComponent, LichChieuComponent, ThongTinComponent, DanhGiaComponent],
+  imports: [CommonModule, ShareModule, MatButtonModule,TrangChuModule],
   exports: [LayoutChiTietPhimComponent]
 })
 export class TrangChiTietPhimModule {}
