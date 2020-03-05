@@ -20,6 +20,185 @@
     </nav>
     <a href="#" class="sigin">
         <i class="fa fa-user-circle"></i>
-        <span>Đăng nhập</span>
+        <span *ngIf="credentials" class="px-3">Hi, {{credentials.hoTen}}</span>
+        <button mat-raised-button color="primary" (click)="open(content)">Đăng nhập</button>
     </a>
 </header>
+<ng-template #content let-modal>
+    <div class="modal-header" *ngIf="statusLogin; else registration">
+        <h2 class="modal-title">Đăng nhập</h2>
+        <p>Đăng nhập để đặt phim, lưu <br>danh sách phim yêu thích, nhận<br> nhiều ưu đãi hấp dẫn.</p>
+        <img src="https://i.pinimg.com/originals/38/7e/69/387e699e082549c79195334fc5c596e7.png">
+        <button type="button" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <i class="fa fa-times-circle" aria-hidden="true"></i>
+        </button>
+    </div>
+    <ng-template #registration>
+        <div class="modal-header">
+            <h2 class="modal-title">Tạo tài khoản</h2>
+            <p>Tạo tài khoản để đặt phim, lưu <br>danh sách phim yêu thích, nhận<br> nhiều ưu đãi hấp dẫn.</p>
+            <img src="https://i.pinimg.com/564x/69/bc/90/69bc90f489d7c66cc77d03c15159ea8b.jpg">
+            <button type="button" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <i class="fa fa-times-circle" aria-hidden="true"></i>
+            </button>
+        </div>
+    </ng-template>
+    <div class="modal-body">
+        <mat-tab-group (selectedTabChange)="changeStatusLogin($event)">
+            <mat-tab label="Đăng nhập">
+                <form class="example-form-Login" [formGroup]="formDangNhap" (ngSubmit)="Login()">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Tài khoản *</mat-label>
+                        <input matInput [formControl]="userNameFormControl" placeholder="Ex.thanhtin">
+
+                        <mat-error *ngIf="userNameFormControl.hasError('required')">
+                            Không được <strong>bỏ trống</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userNameFormControl.hasError('maxlength')">
+                            Không quá <strong>quá dài</strong>
+                        </mat-error>
+                        <mat-icon matSuffix>account_circle</mat-icon>
+                        <mat-error *ngIf="userNameFormControl.hasError('minlength')">
+                            Không được <strong>quá ngắn</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width passWord">
+                        <mat-label>Mật khẩu *</mat-label>
+                        <input matInput [formControl]="passWordFormControl" [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon style="font-size: 20px;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+
+                        <mat-error *ngIf="passWordFormControl.hasError('required')">
+                            Không được <strong>bỏ trống</strong>
+                        </mat-error>
+                        <mat-error *ngIf="passWordFormControl.hasError('maxlength')">
+                            Không quá <strong>quá dài</strong>
+                        </mat-error>
+                        <mat-error *ngIf="passWordFormControl.hasError('minlength')">
+                            Không được <strong>quá ngắn</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <button class="btnLogin" mat-raised-button color="primary">Đăng nhập</button>
+                    <!-- [disabled]="formDangNhap.invalid"     -->
+                </form>
+                <a href="https://www.facebook.com/">
+                    <button class="btnLogin btnFacebook" mat-raised-button color="primary">                        
+                        Đăng nhập bằng Facebook
+                    </button>
+                </a>
+                <a href="https://accounts.google.com/signin/v2/identifier?hl=vi&passive=true&continue=https%3A%2F%2Fwww.google.com%2F&flowName=GlifWebSignIn&flowEntry=ServiceLogin">
+                    <button class="btnLogin btnGoogle" mat-raised-button color="primary">
+                        Đăng nhập bằng Google
+                    </button>
+                </a>
+            </mat-tab>
+            <mat-tab label="Tạo tài khoản">
+                <form class="example-form-Sigup" [formGroup]="formDangKy" (ngSubmit)="Sigup()">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Tài khoản *</mat-label>
+                        <input matInput [formControl]="userNameDKFormControl" placeholder="Ex. thanhtin123">
+                        <mat-error *ngIf="userNameDKFormControl.hasError('pattern')">
+                            Không được điền <strong>ký tự đặc biệt</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userNameDKFormControl.hasError('required')">
+                            Không được <strong>bỏ trống</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userNameDKFormControl.hasError('minlength')">
+                            Không được <strong>quá ngắn</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userNameDKFormControl.hasError('maxlength')">
+                            Không được <strong>quá dài</strong>
+                        </mat-error>
+                        <mat-icon matSuffix>account_circle</mat-icon>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Mật khẩu *</mat-label>
+                        <input matInput [formControl]="passWordDKFormControl" [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon style="font-size: 20px;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="passWordDKFormControl.hasError('required')">
+                            Không được <strong>bỏ trống</strong>
+                        </mat-error>
+                        <mat-error *ngIf="passWordDKFormControl.hasError('minlength')">
+                            Không được <strong>quá ngắn</strong>
+                        </mat-error>
+                        <mat-error *ngIf="passWordDKFormControl.hasError('maxlength')">
+                            Không được <strong>quá dài</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Họ tên *</mat-label>
+                        <input matInput [formControl]="fullNameDKFormControl" placeholder="Ex. Nguyễn Thành Tín">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                        <mat-error *ngIf="fullNameDKFormControl.hasError('required')">
+                            Không được <strong>bỏ trống</strong>
+                        </mat-error>
+                        <mat-error *ngIf="fullNameDKFormControl.hasError('minlength')">
+                            Không được <strong>quá ngắn</strong>
+                        </mat-error>
+                        <mat-error *ngIf="fullNameDKFormControl.hasError('maxlength')">
+                            Không được <strong>quá dài</strong>
+                        </mat-error>
+                        <mat-error *ngIf="fullNameDKFormControl.hasError('pattern')">
+                            Không được điền <strong>số và ký tự đặc biệt</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Email *</mat-label>
+                        <input matInput [formControl]="emailDKFormControl" placeholder="Ex.tin231@gmail.com">
+                        <mat-icon matSuffix> email</mat-icon>
+                        <mat-error *ngIf="emailDKFormControl.hasError('required')">
+                            Không được <strong>bỏ trống</strong>
+                        </mat-error>
+                        <mat-error *ngIf="emailDKFormControl.hasError('pattern')">
+                            Điền <strong>sai cấu trúc</strong>
+                        </mat-error>
+                        <mat-error *ngIf="emailDKFormControl.hasError('maxlength')">
+                            Không được <strong>quá dài</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Điện thoại *</mat-label>
+                        <span matPrefix>+84 &nbsp;</span>
+                        <input type="tel" matInput [formControl]="phoneDKFormControl" placeholder="(09|03|07|08|05)-234-268-23">
+                        <mat-icon matSuffix>perm_device_information</mat-icon>
+                        <mat-error *ngIf="phoneDKFormControl.hasError('required')">
+                            Không được <strong>bỏ trống</strong>
+                        </mat-error>
+                        <mat-error *ngIf="phoneDKFormControl.hasError('pattern')">
+                            Điền <strong>sai cấu trúc</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Mã loại người dùng</mat-label>
+                        <select matNativeControl [formControl]="typeUserDKFormControl" required>
+                          <option value="KhachHang">Khách Hàng</option>
+                        </select>
+                        <mat-error *ngIf="typeUserDKFormControl.hasError('required')">
+                            Không được <strong>bỏ trống</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Mã nhóm</mat-label>
+                        <select matNativeControl [formControl]="typeTeamDKFormControl" required>
+                          <option value="GP01">GP01</option>
+                          <option value="GP02">GP02</option>
+                          <option value="GP03">GP03</option>
+                          <option value="GP04">GP04</option>
+                          <option value="GP05">GP05</option>
+                          <option value="GP06">GP06</option>
+                        </select>
+                        <mat-error *ngIf="typeTeamDKFormControl.hasError('required')">
+                            Không được <strong>bỏ trống</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <button class="btnSigup" mat-raised-button color="primary">Đăng ký</button>
+                </form>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</ng-template>

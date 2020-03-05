@@ -8,7 +8,9 @@ import { AppComponent } from './app.component';
 import { TrangChuModule } from './Controller/trang-chu/trang-chu.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TrangChiTietPhimModule } from './Controller/trang-chi-tiet-phim/trang-chi-tiet-phim.module';
-import {RouterModule} from '@angular/router'
+import {RouterModule} from '@angular/router';
+
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {RouterModule} from '@angular/router'
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule,
-    NgbModule
+    NgbModule,
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

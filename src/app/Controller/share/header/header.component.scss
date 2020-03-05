@@ -42,3 +42,109 @@
         }
     }
 }
+
+.modal-content {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(248, 248, 248);
+    .modal-header {
+        width: 40%;
+        display: block;
+        padding-top: 59px;
+        padding-left: 37px;
+        background: rgb(255, 255, 255);
+        h2 {
+            font-size: 32px;
+            font-weight: 300;
+            color: rgb(36, 36, 36);
+            margin-top: 0px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.38;
+            color: rgb(120, 120, 120);
+            margin: 0px 0px 10px;
+        }
+        img {
+            height: 60%;
+            margin-top: 70px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        button {
+            background-color: white;
+            border: none;
+            outline: none;
+            i {
+                font-size: 30px;
+                position: absolute;
+                top: -9px;
+                right: -6px;
+            }
+        }
+    }
+    .modal-body {
+        width: calc(100% - 390px);
+        float: left;
+        min-height: 600px;
+        margin: 15px;
+        background: rgb(255, 255, 255);
+        border-radius: 0px 6px 6px 0px;
+        .example-form-Login {
+            margin-top: 60px;
+            .example-full-width {
+                display: block;
+            }
+            .passWord {
+                padding-top: 20px;
+            }
+            .btnLogin {
+                width: 100%;
+                background: rgb(253, 216, 53);
+                color: rgb(74, 74, 74);
+                margin-top: 50px;
+                border-radius: 5px;
+                outline: none;
+                border: none;
+            }
+        }
+        .btnFacebook {
+            color: rgb(255, 255, 255);
+            background: rgb(59, 89, 152);
+            width: 100%;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            margin-top: 10px;
+        }
+        .btnGoogle {
+            background: rgb(223, 74, 50);
+            width: 100%;
+            color: rgb(255, 255, 255);
+            margin-top: 10px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+        }
+        .example-form-Sigup {
+            margin-top: 60px;
+            .example-full-width {
+                display: block;
+            }
+            .passWord {
+                padding-top: 20px;
+            }
+            .btnSigup {
+                width: 100%;
+                background: rgb(253, 216, 53);
+                color: rgb(74, 74, 74);
+                margin-top: 50px;
+                border-radius: 5px;
+                outline: none;
+                border: none;
+            }
+        }
+    }
+}

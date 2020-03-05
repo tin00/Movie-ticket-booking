@@ -45,7 +45,7 @@ import {RouterModule, Router} from "@angular/router"
     MatButtonModule,
     MatTabsModule,
     NgbModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [LayoutTrangChuComponent,RapPhimComponent]
 })
