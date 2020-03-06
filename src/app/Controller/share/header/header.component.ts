@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {  
   credentials:any;
-  
+  statusbtn:boolean;
   statusLogin: boolean = true;
   hide: boolean = true;
   ndLogin: nguoiDung[] = [];
@@ -94,6 +94,11 @@ export class HeaderComponent implements OnInit {
     this._loginService.nguoiDungEmitter.subscribe((newUser)=>{
       this.credentials=newUser;
     })
+    this.statusbtn=this._loginService.statusbtn;
+    this._loginService.btnEmitter.subscribe((newBtn)=>{
+      this.statusbtn=newBtn
+    })
+    
   }
   open(content) {
     this.modalService.open(content, { size: "lg" });
@@ -109,16 +114,32 @@ export class HeaderComponent implements OnInit {
     // console.log(this.formDangNhap.value)
     if(!this.formDangNhap.invalid){
       this._loginGateWay.dangNhap(this.formDangNhap.value).subscribe((result)=>{
+        //Sau khi lấy về gửi lên local store
+        localStorage.setItem("credentials",JSON.stringify(result));
+        //Đưa lên services
         this._loginService.setNguoiDungLogin(result);
         console.log(this.credentials);
         alert("Đăng nhập thành công");
+        //Sau khi đăng nhập thành công --> sẽ thoát modal
         this.modalService.dismissAll(this.content)
+        //SAu khi đăng nhập thành công --> sẽ thành btnLogout
+        this._loginService.statusButton(false);
+        localStorage.setItem("statusBtn",JSON.stringify(this.statusbtn));
+        //Sau khi đăng nhập thành công --> sẽ xóa cái trắng cái form
         this.formDangNhap.reset();
       },(err:any)=>{
         console.log(err.error);
         alert(err.error);
       })
     }
+  }
+  logOut(){    
+    this._loginService.statusButton(true);
+    localStorage.setItem("statusBtn",JSON.stringify(this.statusbtn));
+    //Xóa dữ liệu trên localstorage
+    localStorage.removeItem("credentials");
+    this._loginService.setNguoiDungLogin(null);
+    // console.log(this.credentials);
   }
   Sigup(){
     // console.log(this.formDangKy.value)
