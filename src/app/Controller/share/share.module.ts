@@ -10,6 +10,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
+
 @NgModule({
   declarations: [HeaderComponent,FooterComponent],
   imports: [
@@ -20,7 +21,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   exports:[HeaderComponent,FooterComponent]
  

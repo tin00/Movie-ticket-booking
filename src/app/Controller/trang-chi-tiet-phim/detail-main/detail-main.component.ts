@@ -11,6 +11,7 @@ import { PhimGateWay } from '../../gateWays/phim';
 })
 export class DetailMainComponent implements OnInit {
   movieDetail;
+  aaa;
   maPhim: string;
   inForPhim: string = "LichChieu";
   constructor(
@@ -21,7 +22,7 @@ export class DetailMainComponent implements OnInit {
   getMovieDetail(){
     this._phimDetail.LayChiTietPhim(this.maPhim).subscribe((dataDetail)=>{
       this._phimService.setMovieDetail(dataDetail);
-      console.log(dataDetail)
+      // console.log(this.movieDetail)
     })
   }
   ngOnInit(): void {
@@ -31,12 +32,13 @@ export class DetailMainComponent implements OnInit {
     })
     this._activated.params.subscribe(result => {
       this.maPhim = result.maPhim;
-      console.log(result);
+      // console.log(result);
       this.getMovieDetail();
     });
   }
   chonInForPhim(value) {
     this.inForPhim = value;
-    console.log(this.inForPhim);
+    // console.log(this.inForPhim);
+    // console.log(this.movieDetail)
   }
 }

@@ -5,20 +5,20 @@
     <nav class="menu-header">
         <ul>
             <li>
-                <a href="#">Lịch chiếu</a>
+                <a href="#lichChieu">Lịch chiếu</a>
             </li>
             <li>
-                <a href="#">Cụm rạp</a>
+                <a href="#cumRap">Cụm rạp</a>
             </li>
             <li>
-                <a href="#">Tin tức</a>
+                <a href="#tinTuc">Tin tức</a>
             </li>
             <li>
-                <a href="#">Ứng dụng</a>
+                <a href="#ungDung">Ứng dụng</a>
             </li>
         </ul>
     </nav>
-    <a href="#" class="sigin">
+    <div class="sigin">
         <i class="fa fa-user-circle"></i>
         <span *ngIf="credentials" class="px-3">Hi, {{credentials.hoTen}}</span>
         <button mat-raised-button *ngIf="statusbtn;else btnLogout" color="primary" (click)="open(content)">Đăng
@@ -27,7 +27,7 @@
             <button mat-raised-button style=" border: none;
             outline: none;" (click)="logOut()" color="warn">Đăng xuất</button>
         </ng-template>
-    </a>
+    </div>
 </header>
 <ng-template #content let-modal>
     <div class="modal-header" *ngIf="statusLogin; else registration">
@@ -46,6 +46,7 @@
             <button type="button" aria-label="Close" (click)="modal.dismiss('Cross click')">
                 <i class="fa fa-times-circle" aria-hidden="true"></i>
             </button>
+
         </div>
     </ng-template>
     <div class="modal-body">

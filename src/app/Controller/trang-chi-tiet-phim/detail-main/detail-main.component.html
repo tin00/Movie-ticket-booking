@@ -5,7 +5,7 @@
     <!-- <div class="styleGradientToplinearBottom"></div> -->
     <div class="row container detailMain__Title">
         <div class="col-6 detailMain__TitleItem">
-            <img [src]="movieDetail.hinhAnh" alt="">
+            <img style="width: 200px;" [src]="movieDetail.hinhAnh" alt="">
             <div class="detailMain__TitleItem__Content">
                 <p>{{movieDetail.ngayKhoiChieu}}</p>
                 <h3>{{movieDetail.tenPhim}}</h3>
@@ -37,7 +37,8 @@
         <app-lich-chieu></app-lich-chieu>
     </div>
     <div class="bookTimeContent container" *ngSwitchCase="'ThongTin'">
-        <app-thong-tin></app-thong-tin>
+        <app-thong-tin [inForMovie]=movieDetail></app-thong-tin>
+
     </div>
     <div class="bookTimeContent container" *ngSwitchCase="'DanhGia'">
         <app-danh-gia></app-danh-gia>

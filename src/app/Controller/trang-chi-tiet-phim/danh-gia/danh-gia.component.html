@@ -1,1 +1,59 @@
-<p>danh-gia works!</p>
+<div class="comment-Title">
+    <div class="newComment" data-toggle="modal" data-target="#exampleModal">
+        <span>
+            <i style="margin-right: 10px;
+            font-size: 30px;
+            padding-left: 23px;" class="fa fa-user-circle"></i>
+        </span>
+        <input type="text" class="inputReview" style="border: none; outline: none;" placeholder="Bạn nghĩ gì về phim này ?">
+        <span style="padding-right: 20px;">
+            <img src="../../../../assets/img/listStar.png" alt="">
+        </span>
+    </div>
+</div>
+<div class="comment-Content" *ngFor="let comments of listComment;let t=index">
+    <div class="comment-Content__items">
+        <span class="items__rate">
+            <i style=" font-size: 30px;
+            padding-left: 23px;padding-top:10px" class="fa fa-user-circle"></i>{{hoTen}}
+            <span *ngFor="let item of listRateRevie;let i=index">
+                <div *ngIf="t===i">
+                    {{item}}
+                    <!-- <div *ngFor="let img of listImg;let hinh=index">
+                        <div *ngIf="hinh===2">
+                            <p>{{img}}</p>
+                              
+                        </div>
+                    </div> -->
+                </div>
+                <!-- <img src="../../../../assets/img/star1.png" alt=""> -->
+            </span>
+
+        </span>
+        <p>
+            {{comments}}
+        </p>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content example-container">
+            <button type="button" class="close closeOver" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="core">
+                <pre><span>{{currentRate}}.0</span></pre>
+
+            </div>
+            <div class="starComment">
+                <ngb-rating [(rate)]="currentRate"></ngb-rating>
+            </div>
+
+            <mat-form-field class="areaComment" appearance="fill">
+                <mat-label>Nói cho mọi người biết bạn nghĩ gì về phim này...</mat-label>
+                <textarea matInput [(ngModel)]="comment"></textarea>
+            </mat-form-field>
+            <button class="btnAddComment" (click)="addComment()" data-dismiss="modal" mat-raised-button color="warn">ĐĂNG</button>
+        </div>
+    </div>
+</div>
