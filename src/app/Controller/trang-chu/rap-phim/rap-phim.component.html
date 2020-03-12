@@ -1,154 +1,54 @@
 <div id="cumRap" style="background-color: white;" class="tab container">
     <div class="container tab-content">
         <mat-tab-group>
-            <mat-tab>
+            <mat-tab *ngFor="let item of listMovieTheater;let i=index">
                 <ng-template mat-tab-label>
-                    <img src="../../../../assets/img/bhd.png" class="tab-content__img" alt="">
+                    <div class="tabImg" style="width: 135px;" (click)="laymaHeThong(item.maHeThongRap)">
+                        <img [src]="item.logo" class="tab-content__img" alt="">
+                    </div>
                 </ng-template>
                 <div class="row">
-                    <div class="col-4 tab-content__movieTheater">
+                    <div class="col-4 tab-content__movieTheater" [style]="styleTab">
                         <ul>
-                            <li>
-                                <button class="tab-content__item" (click)="bhd1Select()">
+                            <li *ngFor="let cumRap of listMovieShowTime">
+                                <button (click)="LayDanhSachPhim(cumRap.maCumRap)" class="tab-content__item">
                                     <img src="../../../../assets/img/bhd-star-bitexco-15379552241200.jpg" alt="">
                                     <div>
-                                        <h4>BHD Star - Bitexco</h4>
-                                        <a href="#">[chi tiết]</a>
-                                    </div>
-                                </button>
-
-                            </li>
-                            <li>
-                                <button class="tab-content__item" (click)="bhd2Select()">
-                                    <img src="../../../../assets/img/bhd-star-bitexco-15379552241200.jpg" alt="">
-                                    <div>
-                                        <h4>BHD Star - Bitexco</h4>
+                                        <h4>{{cumRap.tenCumRap}}</h4>
                                         <a href="#">[chi tiết]</a>
                                     </div>
                                 </button>
                             </li>
                         </ul>
                     </div>
-                    <div class="col-8">
-                        <div class="row" *ngIf="statusChonRap;else bhd2">
-                            <div class="col-12 tab-content__movieTheaterBottom">
-                                <div class="tab-content__imgTitle">
-                                    <img src="../../../../assets/img/birds-of-prey-cuoc-lot-xac-huy-hoang-cua-harley-quinn-15765680654398_60x60.jpg" alt="">
-                                    <div class="pl-4">
-                                        <p>Ký Sinh Trùng - Parasite</p>
-                                        <span>132 phút - TIX 9.1 - IMDb 8.6</span>
-                                    </div>
-                                </div>
-                                <h4 class="pl-3 py-2">2D Digital</h4>
-                                <div class="tab-content__imgTime pl-3">
-                                    <button mat-raised-button color="primary">12:50</button>
-                                    <button mat-raised-button color="primary" class=" mx-3">19:10</button>
-                                    <button mat-raised-button color="primary">23:05</button>
-                                </div>
-                            </div>
-                            <div class="col-12 tab-content__movieTheaterBottom">
-                                <div class="tab-content__imgTitle">
-                                    <img src="../../../../assets/img/birds-of-prey-cuoc-lot-xac-huy-hoang-cua-harley-quinn-15765680654398_60x60.jpg" alt="">
-                                    <div class="pl-4">
+                    <div class="col-8 " [style]="styleTab">
+                        <div class="row">
+                            <div class="col-12 tab-content__movieTheaterBottom" *ngFor="let phim of deMo">
+                                <div class="tab-content__imgTitle" *ngFor="let lichChieu of lichChieu">
+                                    <div>
+                                        <img src="../../../../assets/img/birds-of-prey-cuoc-lot-xac-huy-hoang-cua-harley-quinn-15765680654398_60x60.jpg" alt="">
+                                        <h4 style="display: block;" class="pl-3 py-2">2D Digital</h4>
 
-                                        <p>Ký Sinh Trùng - Parasite</p>
+                                    </div>
+                                    <div class="pl-4">
+                                        <p class="movieName">{{phim.tenPhim}}</p>
+                                        <p>{{lichChieu.tenRap}}</p>
                                         <span>132 phút - TIX 9.1 - IMDb 8.6</span>
                                     </div>
-                                </div>
-                                <h4 class="pl-3 py-2">2D Digital</h4>
-                                <div class="tab-content__imgTime pl-3">
-                                    <button mat-raised-button color="primary">12:50</button>
-                                    <button mat-raised-button color="primary" class=" mx-3">19:10</button>
-                                    <button mat-raised-button color="primary">23:05</button>
+
+                                    <div class="tab-content__imgTime pl-3">
+                                        <button mat-raised-button color="primary">{{lichChieu.ngayChieuGioChieu | date:'MM/dd/yyyy - h:mm a'}}</button>
+                                        <!-- <button mat-raised-button color="primary" class=" mx-3">19:10</button>
+                                        <button mat-raised-button color="primary">23:05</button> -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <ng-template #bhd2>
-                            <div class="row">
-                                <div class="col-12 tab-content__movieTheaterBottom">
-                                    <div class="tab-content__imgTitle">
-                                        <img src="../../../../assets/img/can-phong-cam-do-su-that-ngu-tri-trong-con-nguoi-u-am-den-co-nao-15810652868586.jpg" alt="">
-                                        <div class="pl-4">
-                                            <p>Ký Sinh Trùng - Parasite</p>
-                                            <span>132 phút - TIX 9.1 - IMDb 8.6</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="pl-3 py-2">2D Digital</h4>
-                                    <div class="tab-content__imgTime pl-3">
-                                        <button mat-raised-button color="primary">12:50</button>
-                                        <button mat-raised-button color="primary" class=" mx-3">19:10</button>
-                                        <button mat-raised-button color="primary">23:05</button>
-                                    </div>
-                                </div>
-                                <div class="col-12 tab-content__movieTheaterBottom">
-                                    <div class="tab-content__imgTitle">
-                                        <img src="../../../../assets/img/can-phong-cam-do-su-that-ngu-tri-trong-con-nguoi-u-am-den-co-nao-15810652868586.jpg" alt="">
-                                        <div class="pl-4">
-
-                                            <p>Ký Sinh Trùng - Parasite</p>
-                                            <span>132 phút - TIX 9.1 - IMDb 8.6</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="pl-3 py-2">2D Digital</h4>
-                                    <div class="tab-content__imgTime pl-3">
-                                        <button mat-raised-button color="primary">12:50</button>
-                                        <button mat-raised-button color="primary" class=" mx-3">19:10</button>
-                                        <button mat-raised-button color="primary">23:05</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </ng-template>
                     </div>
                 </div>
             </mat-tab>
-            <mat-tab>
-                <ng-template mat-tab-label>
-                    <img src="../../../../assets/img/404b8c4b80d77732e7426cdb7e24be20.png" class="tab-content__img" alt="">
-                </ng-template>
-                Content 2
-            </mat-tab>
-            <mat-tab>
-                <ng-template mat-tab-label>
-                    <img src="../../../../assets/img/1721cfa98768f300c03792e25ceb0191.png" class="tab-content__img" alt="">
-                </ng-template>
 
-                Content 3
-            </mat-tab>
-            <mat-tab>
-                <ng-template mat-tab-label>
-                    <img src="../../../../assets/img/megags.png" class="tab-content__img" alt="">
-                </ng-template>
-
-                Content 4
-            </mat-tab>
-            <mat-tab>
-                <ng-template mat-tab-label>
-                    <img src="../../../../assets/img/cgv.png" class="tab-content__img" alt="">
-                </ng-template>
-
-                Content 5
-            </mat-tab>
-            <mat-tab>
-                <ng-template mat-tab-label>
-                    <img src="../../../../assets/img/e520781386bd5436e94d6e15e193a005.png" class="tab-content__img" alt="">
-                </ng-template>
-
-                Content 6
-            </mat-tab>
-            <mat-tab>
-                <ng-template mat-tab-label>
-                    <img src="../../../../assets/img/dcine.png" class="tab-content__img" alt="">
-                </ng-template>
-
-                Content 7
-            </mat-tab>
-            <mat-tab>
-                <ng-template mat-tab-label>
-                    <img src="../../../../assets/img/dongdacinema.png" class="tab-content__img" alt="">
-                </ng-template>
-
-                Content 8
-            </mat-tab>
         </mat-tab-group>
+
     </div>
 </div>

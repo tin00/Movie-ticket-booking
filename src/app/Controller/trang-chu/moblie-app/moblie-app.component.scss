@@ -1,4 +1,5 @@
 .mobile {
+    height: 610px;
     .mobile__background {
         background-image: url("../../../../assets/img/backapp.jpg");
         background-position: center;
@@ -6,10 +7,12 @@
         background-repeat: no-repeat;
         overflow: hidden;
         padding: 120px 0 80px 0;
+        height: 100%;
         .mobile__contentleft {
             color: #fff;
             float: right;
             padding-left: 250px;
+            padding-top: 4%;
             p {
                 font-size: medium;
                 padding: 14px 0px;

@@ -15,10 +15,15 @@
     <div class="comment-Content__items">
         <span class="items__rate">
             <i style=" font-size: 30px;
-            padding-left: 23px;padding-top:10px" class="fa fa-user-circle"></i>{{hoTen}}
+            padding-left: 23px;padding-top:10px" class="fa fa-user-circle"></i>
+            <div class="name-login" *ngFor="let name of hoTen; let n=index">
+                <div *ngIf="t===n">
+                    {{name}}
+                </div>
+            </div>
             <span *ngFor="let item of listRateRevie;let i=index">
                 <div *ngIf="t===i">
-                    {{item}}
+                    {{item}}<img class="ml-1" style="width: 11px;margin-bottom: 3px;" src="../../../../assets/img/star1.png" alt="">
                     <!-- <div *ngFor="let img of listImg;let hinh=index">
                         <div *ngIf="hinh===2">
                             <p>{{img}}</p>
@@ -26,7 +31,6 @@
                         </div>
                     </div> -->
                 </div>
-                <!-- <img src="../../../../assets/img/star1.png" alt=""> -->
             </span>
 
         </span>
