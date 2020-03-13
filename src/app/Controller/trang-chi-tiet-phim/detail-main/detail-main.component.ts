@@ -22,7 +22,7 @@ export class DetailMainComponent implements OnInit {
   getMovieDetail(){
     this._phimDetail.LayChiTietPhim(this.maPhim).subscribe((dataDetail)=>{
       this._phimService.setMovieDetail(dataDetail);
-      // console.log(this.movieDetail)
+      console.log(this.movieDetail)
     })
   }
   ngOnInit(): void {

@@ -1,1 +1,56 @@
-<app-rap-phim></app-rap-phim>
+<!-- <app-rap-phim></app-rap-phim> -->
+<!-- *ngFor="let item of listMovieTheater;let i=index" -->
+<!-- [src]="item.logo" -->
+<!-- (click)="laymaHeThong(item.maHeThongRap)" -->
+<div class="container tab-content">
+    <mat-tab-group>
+        <mat-tab *ngFor="let item of listLichChieu">
+            <ng-template mat-tab-label>
+                <div class="tabImg" style="width: 135px;" (click)="cumRap(item.cumRapChieu)">
+                    <img [src]="item.logo" class="tab-content__img" alt="">
+                </div>
+            </ng-template>
+            <div class="row">
+                <div class="col-4 tab-content__movieTheater">
+                    <ul>
+                        <li *ngFor="let cumRap of listCumRap">
+                            <button class="tab-content__item" (click)="LayLichChieuPhim(cumRap.lichChieuPhim)">
+                                <img src="../../../../assets/img/galaxy-nguyen-van-qua-15381052937743.jpg" alt="">
+                                <div>
+                                    <h4>{{cumRap.tenCumRap}}</h4>
+                                    <a href="#">[chi tiết]</a>
+                                </div>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-8" [style]="styleHeight">
+                    <div class="row">
+                        <div class="col-12 tab-content__movieTheaterBottom">
+                            <div class="tab-content__imgTitle" *ngFor="let lich of listLichChieuCumRap">
+                                <div>
+                                    <img [src]="hinhAnhPhim" alt="">
+                                    <h4 style="display: block;" class="pl-3 py-2">2D Digital</h4>
+
+                                </div>
+                                <div class="pl-4">
+                                    <p class="movieName">{{tenPhim}}</p>
+                                    <p>{{lich.tenRap}}</p>
+                                    <span>132 phút - TIX 9.1 - IMDb 8.6</span>
+                                </div>
+
+                                <div class="tab-content__imgTime pl-3">
+                                    <button mat-raised-button color="primary">{{lich.ngayChieuGioChieu | date:'dd/MM/yyyy - h:mm a'}}</button>
+                                    <!-- <button mat-raised-button color="primary" class=" mx-3">19:10</button>
+                                    <button mat-raised-button color="primary">23:05</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+
+    </mat-tab-group>
+
+</div>

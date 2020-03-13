@@ -1,13 +1,13 @@
 <div class="detailMain">
     <div class="detailMain__background">
-        <img src="../../../../assets/img/little-15816462985668.jpg" alt="">
+        <img [src]="movieDetail.hinhAnh" alt="">
     </div>
     <!-- <div class="styleGradientToplinearBottom"></div> -->
     <div class="row container detailMain__Title">
         <div class="col-6 detailMain__TitleItem">
             <img style="width: 200px;" [src]="movieDetail.hinhAnh" alt="">
             <div class="detailMain__TitleItem__Content">
-                <p>{{movieDetail.ngayKhoiChieu}}</p>
+                <p>{{movieDetail.ngayKhoiChieu | date:'dd/MM/yyyy'}}</p>
                 <h3>{{movieDetail.tenPhim}}</h3>
                 <p>117 phút - 0 IMDb - 2D/Digital</p>
                 <button mat-raised-button color="warn">Mua vé</button>

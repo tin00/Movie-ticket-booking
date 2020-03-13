@@ -12,6 +12,7 @@ import { DanhGiaComponent } from "./danh-gia/danh-gia.component";
 import { FormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     MatInputModule,
     MatFormFieldModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    MatTabsModule
   ],
   exports: [LayoutChiTietPhimComponent]
 })

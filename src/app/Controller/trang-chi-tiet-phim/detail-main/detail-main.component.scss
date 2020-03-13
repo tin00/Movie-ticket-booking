@@ -8,6 +8,10 @@
         filter: blur(15px);
         margin: -11px 0 -5px -10px;
         width: calc(100% + 5px);
+        height: 800px;
+        img {
+            width: 100%;
+        }
     }
     .styleGradientBottomlinearTop {
         background: linear-gradient(to top, rgb(10, 32, 41), transparent 100%);

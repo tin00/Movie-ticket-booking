@@ -19,4 +19,9 @@ export class rapPhimGateWay{
         let observ=this._http.get(url);
         return observ;
     }
+    getLichChieuTheoPhim(maPhim):Observable<any>{
+        let url=`http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`;
+        let observ=this._http.get(url);
+        return observ;
+    }
 }
