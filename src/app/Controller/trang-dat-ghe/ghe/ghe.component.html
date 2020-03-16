@@ -1,0 +1,6 @@
+<ng-container *ngIf="!ghe.TrangThai;else ghedadat">
+    <button mat-raised-button [ngStyle]="{'background-color':status===true ? 'green':'#3e515d'}" (click)="datGhe()" class="btn btn-success mr-3 mb-3 btnGhe">{{ghe.SoGhe}}</button>
+</ng-container>
+<ng-template #ghedadat>
+    <button mat-raised-button class="btn btnGheDaChon mr-3 mb-3" disabled>{{ghe.SoGhe}}</button>
+</ng-template>

@@ -1,0 +1,61 @@
+<div class="datGhe-Main">
+    <div class="row">
+        <div class="col-8">
+            <div class="ticket-booking">
+                <div class="top-Content">
+                    <div class="top-Content__theater">
+                        <div class="logo">
+                            <img src="https://s3img.vcdn.vn/123phim/2018/09/ee621ee05dcd4565caead4f29421b41e.png" alt="">
+                        </div>
+                        <div class="infor-theater">
+                            <span style="color:#9C9C9C">CGV</span>
+                            <span> - Hồ Gươm Plaza</span>
+                            <p>Hôm nay - 15:00 - Cinema 3</p>
+                        </div>
+                    </div>
+                    <div class="top-Content__TimeBooking">
+                        <p class="infor1">Thời gian giữ ghế</p>
+                        <p class="infor2">
+                            <countdown [config]="{leftTime: 300,format:'mm:ss'}" (event)="handleEvent($event)"></countdown>
+                        </p>
+                    </div>
+                </div>
+                <div class="screen">
+                    <img src="../../../../assets/img/screen.png" alt="">
+                </div>
+                <div class="seat">
+                    <div class="col-6 mx-auto">
+                        <app-ghe *ngFor="let gheItem of listSeat" (emitStatus)="datGheParent($event,gheItem)" [ghe]="gheItem"></app-ghe>
+                    </div>
+                    <hr>
+                    <div class="note-Seat">
+                        <div class="note-SeatItem">
+                            <button mat-raised-button style="background-color:#3e515d ;" class="btn"></button>
+                            <p>Chưa chọn</p>
+                        </div>
+                        <div class="note-SeatItem">
+                            <button mat-raised-button style="background-color:#008000 ;" class="btn"></button>
+                            <p>Đang chọn</p>
+                        </div>
+                        <div class="note-SeatItem">
+                            <button mat-raised-button disabled class="btn "></button>
+                            <p>Đã có người chọn</p>
+                        </div>
+                    </div>
+                    <div style="height: 200px;overflow: auto;">
+                        <div *ngFor=" let demo of danhSachGheDangDat ">
+                            <p>Tên ghế: {{demo.TenGhe}}</p>
+                            <p>Giá: {{demo.Gia}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <p>Số ghế đã đặt: {{soGheDaDat}}</p>
+                    <p>Tổng số ghế : {{soGheConLai}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 ">
+
+        </div>
+    </div>
+</div>

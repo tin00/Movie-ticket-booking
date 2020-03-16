@@ -12,8 +12,8 @@ import { DanhGiaComponent } from "./danh-gia/danh-gia.component";
 import { FormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import {MatTabsModule} from '@angular/material/tabs';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { RouterModule, Router } from "@angular/router"
 @NgModule({
   declarations: [
     LayoutChiTietPhimComponent,
@@ -31,8 +31,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatFormFieldModule,
     NgbModule,
     FormsModule,
-    MatTabsModule
+    MatTabsModule, 
+    RouterModule
   ],
   exports: [LayoutChiTietPhimComponent]
 })
-export class TrangChiTietPhimModule {}
+export class TrangChiTietPhimModule { }
