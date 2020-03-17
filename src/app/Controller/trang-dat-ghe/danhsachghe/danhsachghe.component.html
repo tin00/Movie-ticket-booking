@@ -55,7 +55,77 @@
             </div>
         </div>
         <div class="col-4 ">
+            <div class="right-Content">
+                <div class="right-Content__form">
+                    <div class="right-Content__cost">
+                        <p>{{costTicket}} đ</p>
+                    </div>
+                    <div class="right-Content__title">
+                        <span class="icon-C">C16</span>
+                        <span class="movie-name">Nắng 3: Lời Hứa Của Cha</span>
+                        <p style="margin-top: 5px;">CGV - Vincom Nguyễn Chí Thanh</p>
+                        <p>Hôm nay 17/03/2020 - 20:30 - Cinema 7</p>
+                    </div>
+                    <div class="seat">
+                        <span class="pr-2" style="color:#fb4226">Ghế</span>
+                        <span *ngFor=" let demo of danhSachGheDangDat" style="color:#fb4226">{{demo.SoGhe}}, </span>
+                        <span class="seat__cost">{{costTicket}} đ</span>
+                    </div>
+                    <div class="list-combo">
+                        <div>
+                            <img src="../../../../assets/img/popcorn.png" alt="">
+                            <span style="font-weight: 500;">Chọn Combo</span>
+                        </div>
+                        <div class="list-combo__cost">
+                            0 đ
+                        </div>
+                    </div>
+                    <form class="form-ticketbooking" [formGroup]="formTicketBooking" (ngSubmit)="ticketBooking()">
 
+                        <mat-form-field class="emailFormFill">
+                            <mat-label>Email *</mat-label>
+                            <input matInput placeholder="pat@example.com" [(ngModel)]="emailDatVe" [formControl]="emailBookingFormControl">
+                            <mat-error *ngIf="emailBookingFormControl.hasError('required')">
+                                Không được <strong>bỏ trống</strong>
+                            </mat-error>
+                            <mat-error *ngIf="emailBookingFormControl.hasError('pattern')">
+                                Điền <strong>sai cấu trúc</strong>
+                            </mat-error>
+                            <mat-error *ngIf="emailBookingFormControl.hasError('maxlength')">
+                                Không được <strong>quá dài</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="emailFormFill">
+                            <mat-label>Điện thoại *</mat-label>
+                            <span matPrefix>+84 &nbsp;</span>
+                            <input type="tel" matInput [(ngModel)]="phoneDatVe" [formControl]="phoneBookingFormControl" placeholder="(09|03|07|08|05)-234-268-23">
+                            <mat-error *ngIf="phoneBookingFormControl.hasError('required')">
+                                Không được <strong>bỏ trống</strong>
+                            </mat-error>
+                            <mat-error *ngIf="phoneBookingFormControl.hasError('pattern')">
+                                Điền <strong>sai cấu trúc</strong>
+                            </mat-error>
+                        </mat-form-field>
+                        <ng-template #payBank>
+                            <mat-radio-group aria-label="Select an option" [formControl]="payBookingFormControl">
+                                <mat-radio-button value="1">Thanh toán qua ngân hàng</mat-radio-button>
+                                <!-- <mat-error *ngIf="payBookingFormControl.hasError('required')">
+                                    Không được <strong>bỏ trống</strong>
+                                </mat-error> -->
+                            </mat-radio-group>
+                        </ng-template>
+                        <div class="pay-Ticket">
+                            <p>Hình thức thanh toán</p>
+                            <p class="pay-Ticket__error" *ngIf="payNumber===0; else payBank">Vui lòng chọn ghế để hiển thị phương thức thanh toán phù hợp.</p>
+                            <p class="pay-Ticket__note">
+                                <img src="../../../../assets/img/exclamation.png" alt=""> Vé đã mua không thể đổi hoặc hoàn tiền Mã vé sẽ được gửi qua tin nhắn
+                                <span style="color:#f79320">điện thoại</span> và <span span style="color:#f79320">Email</span> đã nhập.</p>
+                        </div>
+                        <button class="btnTicketBooking" color="primary" mat-raised-button>Đặt vé</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
