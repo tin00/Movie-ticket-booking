@@ -1,16 +1,29 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-
+import { registerLocaleData } from '@angular/common'
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr-VND')
 @Component({
   selector: 'app-danhsachghe',
   templateUrl: './danhsachghe.component.html',
   styleUrls: ['./danhsachghe.component.scss']
 })
 export class DanhsachgheComponent implements OnInit {
+  styleRight: string;
+  styleRightSelect: boolean = true;
+  backgroundBooking: boolean
   costTicket: number = 0;
-  payNumber:number=0;
+  costCombo: number = 0;
+  costSeat: number = 0;
+  payNumber: number = 0;
   emailDatVe;
   phoneDatVe;
+
+  listFood = [
+    { nameFood: "MR 2020", Gia: 79000, hinhAnhFood: "../../../../assets/img/my_combo_mr_2020.jpg", soLuongFood: 0 },
+    { nameFood: "HB 2020", Gia: 120000, hinhAnhFood: "../../../../assets/img/Ham.png", soLuongFood: 0 },
+    { nameFood: "RC 2020", Gia: 150000, hinhAnhFood: "../../../../assets/img/m5.png", soLuongFood: 0 }
+  ];
   listSeat = [{ SoGhe: 1, TenGhe: "số 1", Gia: 100, TrangThai: false },
   { SoGhe: 2, TenGhe: "số 2", Gia: 100, TrangThai: false },
   { SoGhe: 3, TenGhe: "số 3", Gia: 100, TrangThai: false },
@@ -61,7 +74,7 @@ export class DanhsachgheComponent implements OnInit {
     Validators.required,
     Validators.pattern("(09|03|07|08|05)+([0-9]{8})")
   ])
-  payBookingFormControl=new FormControl("",[
+  payBookingFormControl = new FormControl("", [
     Validators.required
   ])
   formTicketBooking: FormGroup = new FormGroup({
@@ -76,7 +89,7 @@ export class DanhsachgheComponent implements OnInit {
         this.soGheConLai++;
       }
     }
-    if(test){
+    if (test) {
       this.emailDatVe = test.email
       this.phoneDatVe = test.soDT
     }
@@ -94,6 +107,7 @@ export class DanhsachgheComponent implements OnInit {
       this.soGheConLai--;
       this.danhSachGheDangDat.push(ghe)
       this.costTicket += ghe.Gia
+      this.costSeat += ghe.Gia
       this.payNumber++
     } else {
       this.soGheDaDat--;
@@ -101,15 +115,49 @@ export class DanhsachgheComponent implements OnInit {
       for (let index in this.danhSachGheDangDat) {
         if (this.danhSachGheDangDat[index].SoGhe === ghe.SoGhe) {
           this.costTicket -= this.danhSachGheDangDat[index].Gia;
+          this.costSeat -= this.danhSachGheDangDat[index].Gia;
           this.danhSachGheDangDat.splice(parseInt(index), 1);
           this.payNumber--;
         }
       }
-    }   
+    }
   }
-  ticketBooking(){
-    if(!this.formTicketBooking.invalid){
-      alert("Không lỗi")
+  ticketBooking() {
+    if (!this.formTicketBooking.invalid) {
+      alert("Đặt vé thành công")
+    }
+  }
+  showListCombo() {
+    if (this.styleRightSelect) {
+      this.backgroundBooking = true;
+      this.styleRight = "right:440px;"
+      this.styleRightSelect = false;
+    } else {
+      this.backgroundBooking = false;
+      this.styleRight = "right:-25px"
+      this.styleRightSelect = true;
+    }
+  }
+  tangSoLuong(name) {
+    for (let index in this.listFood) {
+      if (this.listFood[index].soLuongFood < 10) {
+        if (name === this.listFood[index].nameFood) {
+          this.costTicket += this.listFood[index].Gia
+          this.costCombo += this.listFood[index].Gia
+          this.listFood[index].soLuongFood++;
+        }
+      }
+    }
+  }
+  giamSoLuong(name) {
+    for (let index in this.listFood) {
+      if (this.listFood[index].soLuongFood > 0) {
+        if (name === this.listFood[index].nameFood) {
+          this.costTicket -= this.listFood[index].Gia
+          this.costCombo -= this.listFood[index].Gia
+          this.listFood[index].soLuongFood--;
+        }
+      }
     }
   }
 }

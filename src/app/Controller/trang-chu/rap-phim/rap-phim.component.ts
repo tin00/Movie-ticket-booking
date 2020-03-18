@@ -12,6 +12,7 @@ import { PhimGateWay } from '../../gateWays/phim';
 })
 export class RapPhimComponent implements OnInit {
   deMo = [];
+  routerDatGhe:string;
   lichChieu=[];
   styleTab: string;
   listMovieTheater;
@@ -20,6 +21,7 @@ export class RapPhimComponent implements OnInit {
   constructor(private _movieTheaterGateWay: rapPhimGateWay, private _movieTheaterService: RapphimService, private _movie: MovieService, private _movieGateWay: PhimGateWay) { }
 
   ngOnInit(): void {
+    this.checkLogin()
     this.getMovieTheater()
   }
   // bhd1Select() {
@@ -91,6 +93,12 @@ export class RapPhimComponent implements OnInit {
           }
         }
       }
+    }
+  }
+  checkLogin(){
+    const login=JSON.parse(localStorage.getItem('credentials'));
+    if(login){      
+      this.routerDatGhe="/datghe"
     }
   }
 }

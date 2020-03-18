@@ -133,7 +133,8 @@ export class HeaderComponent implements OnInit {
       })
     }
   }
-  logOut(){    
+  logOut(){   
+    location.reload() 
     this._loginService.statusButton(true);
     localStorage.setItem("statusBtn",JSON.stringify(this.statusbtn));
     //Xóa dữ liệu trên localstorage

@@ -8,21 +8,26 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './lich-chieu.component.html',
   styleUrls: ['./lich-chieu.component.scss']
 })
+
 export class LichChieuComponent implements OnInit {
-  tenPhim:string
+  tenPhim: string;
+  routerDatVe: string;
   listRapPhim = [];
   listLichChieu = [];
-  listCumRap=[];
-  listLichChieuCumRap=[];
+  listCumRap = [];
+  listLichChieuCumRap = [];
   maPhim: string
-  hinhAnhPhim:string
-  styleHeight:string;
+  hinhAnhPhim: string
+  styleHeight: string;
   constructor(private _movieTheaterAPI: rapPhimGateWay, private _movieTheaterService: RapphimService, private _ma: ActivatedRoute) { }
 
   ngOnInit(): void {
+    
+    this.RouteDatVe()
+  
     this.getMovieTheater()
-    this._ma.params.subscribe(result=>{
-      this.maPhim=result.maPhim;
+    this._ma.params.subscribe(result => {
+      this.maPhim = result.maPhim;
       this.getLichChieu(this.maPhim);
     })
   }
@@ -46,20 +51,26 @@ export class LichChieuComponent implements OnInit {
     })
     this._movieTheaterAPI.getLichChieuTheoPhim(maPhim).subscribe((data) => {
       this._movieTheaterService.setLichChieu(data.heThongRapChieu)
-      this.tenPhim=data.tenPhim
-      this.hinhAnhPhim=data.hinhAnh
+      this.tenPhim = data.tenPhim
+      this.hinhAnhPhim = data.hinhAnh
       console.log(this.listLichChieu);
     }, (err) => {
       console.log(err.error)
     })
   }
-  cumRap(cumRap){
-    this.listCumRap=cumRap;
+  cumRap(cumRap) {
+    this.listCumRap = cumRap;
     console.log(this.listCumRap)
   }
-  LayLichChieuPhim(lich){
-    this.listLichChieuCumRap=lich;
-    this.styleHeight="height:700px; overflow:auto"
+  LayLichChieuPhim(lich) {
+    this.listLichChieuCumRap = lich;
+    this.styleHeight = "height:700px; overflow:auto"
     console.log(this.listLichChieuCumRap)
+  }
+  RouteDatVe() {
+    const login = JSON.parse(localStorage.getItem("credentials"));
+    if (login) {
+      this.routerDatVe = "/datghe";
+    }
   }
 }

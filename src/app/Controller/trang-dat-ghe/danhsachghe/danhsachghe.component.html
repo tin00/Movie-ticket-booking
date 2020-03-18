@@ -42,13 +42,6 @@
                             <p>Đã có người chọn</p>
                         </div>
                     </div>
-                    <div style="height: 200px;overflow: auto;">
-                        <div *ngFor=" let demo of danhSachGheDangDat ">
-                            <p>Tên ghế: {{demo.TenGhe}}</p>
-                            <p>Giá: {{demo.Gia}}</p>
-                        </div>
-                    </div>
-                    <hr>
                     <p>Số ghế đã đặt: {{soGheDaDat}}</p>
                     <p>Tổng số ghế : {{soGheConLai}}</p>
                 </div>
@@ -57,8 +50,9 @@
         <div class="col-4 ">
             <div class="right-Content">
                 <div class="right-Content__form">
+                    <img class="buterfly" src="../../../../assets/img/butterfly-8814-17610-300x300.png" alt="">
                     <div class="right-Content__cost">
-                        <p>{{costTicket}} đ</p>
+                        <p>{{costTicket | currency:'VND':'symbol':'0.0':'fr-VND'}}</p>
                     </div>
                     <div class="right-Content__title">
                         <span class="icon-C">C16</span>
@@ -69,15 +63,15 @@
                     <div class="seat">
                         <span class="pr-2" style="color:#fb4226">Ghế</span>
                         <span *ngFor=" let demo of danhSachGheDangDat" style="color:#fb4226">{{demo.SoGhe}}, </span>
-                        <span class="seat__cost">{{costTicket}} đ</span>
+                        <span class="seat__cost">{{costSeat | currency:'VND':'symbol':'0.0':'fr-VND'}}</span>
                     </div>
-                    <div class="list-combo">
+                    <div class="point-combo" (click)="showListCombo()">
                         <div>
                             <img src="../../../../assets/img/popcorn.png" alt="">
                             <span style="font-weight: 500;">Chọn Combo</span>
                         </div>
                         <div class="list-combo__cost">
-                            0 đ
+                            {{costCombo | currency:'VND':'symbol':'0.0':'fr-VND'}}
                         </div>
                     </div>
                     <form class="form-ticketbooking" [formGroup]="formTicketBooking" (ngSubmit)="ticketBooking()">
@@ -110,10 +104,10 @@
                         <ng-template #payBank>
                             <mat-radio-group aria-label="Select an option" [formControl]="payBookingFormControl">
                                 <mat-radio-button value="1">Thanh toán qua ngân hàng</mat-radio-button>
-                                <!-- <mat-error *ngIf="payBookingFormControl.hasError('required')">
-                                    Không được <strong>bỏ trống</strong>
-                                </mat-error> -->
                             </mat-radio-group>
+                            <mat-error style="padding-left: 29px;" *ngIf="payBookingFormControl.hasError('required')">
+                                Không được <strong>bỏ trống</strong>
+                            </mat-error>
                         </ng-template>
                         <div class="pay-Ticket">
                             <p>Hình thức thanh toán</p>
@@ -122,8 +116,32 @@
                                 <img src="../../../../assets/img/exclamation.png" alt=""> Vé đã mua không thể đổi hoặc hoàn tiền Mã vé sẽ được gửi qua tin nhắn
                                 <span style="color:#f79320">điện thoại</span> và <span span style="color:#f79320">Email</span> đã nhập.</p>
                         </div>
-                        <button class="btnTicketBooking" color="primary" mat-raised-button>Đặt vé</button>
+                        <button class="btnTicketBooking" [disabled]="formTicketBooking.invalid" color="primary" mat-raised-button>Đặt vé</button>
                     </form>
+                </div>
+            </div>
+        </div>
+        <div class="background-Booking" *ngIf="backgroundBooking" (click)="showListCombo()">
+
+        </div>
+        <div class="list-Combo" [style]="styleRight">
+            <div class="list-Combo__Title">
+                <p>COMBO</p>
+            </div>
+            <div class="list-Combo__Food">
+                <div class="list-Combo__FoodItems row" *ngFor="let food of listFood">
+                    <div class="col-3">
+                        <img [src]="food.hinhAnhFood" alt="">
+                    </div>
+                    <div class="col-5">
+                        <p class="nameFood">MY COMBO {{food.nameFood}}</p>
+                        <P class="costFood">{{food.Gia | currency:'VND':'symbol':'0.0':'fr-VND'}}</P>
+                    </div>
+                    <div class="col-4" class="minusAdd">
+                        <button class="minus-amount" (click)="giamSoLuong(food.nameFood)">-</button>
+                        <span class="number">{{food.soLuongFood}}</span>
+                        <button class="add-amount" (click)="tangSoLuong(food.nameFood)">+</button>
+                    </div>
                 </div>
             </div>
         </div>
