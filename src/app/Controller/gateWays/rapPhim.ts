@@ -24,4 +24,9 @@ export class rapPhimGateWay{
         let observ=this._http.get(url);
         return observ;
     }
+    getDanhSachPhongVe(maLichChieu):Observable<any>{
+        let url=`http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`;
+        let observ=this._http.get(url);
+        return observ;
+    }
 }

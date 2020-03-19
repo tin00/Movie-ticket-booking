@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class LichChieuComponent implements OnInit {
+  login
   tenPhim: string;
   routerDatVe: string;
   listRapPhim = [];
@@ -22,8 +23,7 @@ export class LichChieuComponent implements OnInit {
   constructor(private _movieTheaterAPI: rapPhimGateWay, private _movieTheaterService: RapphimService, private _ma: ActivatedRoute) { }
 
   ngOnInit(): void {
-    
-    this.RouteDatVe()
+    this.login = JSON.parse(localStorage.getItem("credentials"));
   
     this.getMovieTheater()
     this._ma.params.subscribe(result => {
@@ -67,10 +67,11 @@ export class LichChieuComponent implements OnInit {
     this.styleHeight = "height:700px; overflow:auto"
     console.log(this.listLichChieuCumRap)
   }
-  RouteDatVe() {
-    const login = JSON.parse(localStorage.getItem("credentials"));
-    if (login) {
+  RouteDatVe() {     
+    if (this.login) {
       this.routerDatVe = "/datghe";
+    }else{
+      alert("Vui lòng đăng nhập")
     }
   }
 }

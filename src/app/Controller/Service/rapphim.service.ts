@@ -7,6 +7,9 @@ export class RapphimService {
   listMovieTheater=[];
   listCumRap=[];
   listLichChieu=[];
+  listPhongVe=[];
+  //Output phong ve
+  @Output () phongVeEmitter=new EventEmitter;
   //Output lich chieu
   @Output () lichChieuEmitter=new EventEmitter;
   //Output Cụm rạp
@@ -14,6 +17,10 @@ export class RapphimService {
   //Output Movie theater list
   @Output () movieTheaterEmitter=new EventEmitter
   constructor() { }
+  setPhongVe(phongVe){
+    this.listPhongVe=phongVe;
+    this.phongVeEmitter.emit(this.listPhongVe);
+  }
   setLichChieu(lichChieu):void{
     this.listLichChieu=lichChieu;
     this.lichChieuEmitter.emit(this.listLichChieu);

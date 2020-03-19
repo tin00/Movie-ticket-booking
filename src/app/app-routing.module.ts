@@ -8,7 +8,7 @@ import { DatghePageComponent } from './Controller/trang-dat-ghe/datghe-page/datg
 const routes: Routes = [
   {path:'',component:LayoutTrangChuComponent},
   {path:'chitietphim/:maPhim',component:LayoutChiTietPhimComponent},
-  {path:'datghe',component:DatghePageComponent}
+  {path:'datghe/:maLichChieu',component:DatghePageComponent}
 ];
 
 @NgModule({

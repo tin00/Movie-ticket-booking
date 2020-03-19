@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { registerLocaleData } from '@angular/common'
 import localeFr from '@angular/common/locales/fr';
+import { ActivatedRoute } from '@angular/router';
+import { RapphimService } from '../../Service/rapphim.service';
+import { rapPhimGateWay } from '../../gateWays/rapPhim';
 registerLocaleData(localeFr, 'fr-VND')
 @Component({
   selector: 'app-danhsachghe',
@@ -9,7 +12,10 @@ registerLocaleData(localeFr, 'fr-VND')
   styleUrls: ['./danhsachghe.component.scss']
 })
 export class DanhsachgheComponent implements OnInit {
+  listPhongVe=[];
+  listGheNgoi:[]
   styleRight: string;
+  maLC:string
   styleRightSelect: boolean = true;
   backgroundBooking: boolean
   costTicket: number = 0;
@@ -62,7 +68,9 @@ export class DanhsachgheComponent implements OnInit {
   soGheConLai = 0;
   soGheDaDat = 0;
   danhSachGheDangDat = []
-  constructor() { }
+  constructor(private _maLichChieu:ActivatedRoute,
+              private _phongVeGateWay:rapPhimGateWay,
+              private _phongVeService:RapphimService) { }
 
   emailBookingFormControl = new FormControl("", [
     Validators.required,
@@ -93,6 +101,25 @@ export class DanhsachgheComponent implements OnInit {
       this.emailDatVe = test.email
       this.phoneDatVe = test.soDT
     }
+    this._maLichChieu.params.subscribe(result=>{
+      this.maLC=result.maLichChieu;
+      console.log(this.maLC);
+      this.getPhongVe(this.maLC)
+    })
+  }
+  getPhongVe(maLichChieu){
+    this.listPhongVe=this._phongVeService.listPhongVe;
+    this._phongVeService.phongVeEmitter.subscribe((newPhongVe)=>{
+      this.listPhongVe=newPhongVe
+    })
+    this._phongVeGateWay.getDanhSachPhongVe(maLichChieu).subscribe((data)=>{
+      this._phongVeService.setPhongVe(data.thongTinPhim);
+      this.listGheNgoi=data.danhSachGhe;
+      console.log(this.listPhongVe)
+      console.log(this.listGheNgoi)
+    },(err)=>{
+      console.log(err.error)
+    })
   }
   handleEvent(event) {
     console.log(event)

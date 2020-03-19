@@ -11,9 +11,10 @@ import { PhimGateWay } from '../../gateWays/phim';
   styleUrls: ['./rap-phim.component.scss']
 })
 export class RapPhimComponent implements OnInit {
+  login
   deMo = [];
-  routerDatGhe:string;
-  lichChieu=[];
+  routerDatGhe: string;
+  lichChieu = [];
   styleTab: string;
   listMovieTheater;
   listCumRap;
@@ -21,7 +22,7 @@ export class RapPhimComponent implements OnInit {
   constructor(private _movieTheaterGateWay: rapPhimGateWay, private _movieTheaterService: RapphimService, private _movie: MovieService, private _movieGateWay: PhimGateWay) { }
 
   ngOnInit(): void {
-    this.checkLogin()
+    this.login = JSON.parse(localStorage.getItem('credentials'));
     this.getMovieTheater()
   }
   // bhd1Select() {
@@ -81,13 +82,13 @@ export class RapPhimComponent implements OnInit {
   }
   LayDanhSachPhim(maCumRap) {
     this.deMo = []
-    this.lichChieu=[]
+    this.lichChieu = []
     for (let n = 0; n < this.listMovieShowTime.length; n++) {
       if (maCumRap === this.listMovieShowTime[n].maCumRap) {
         for (let t = 0; t < this.listMovieShowTime[n].danhSachPhim.length; t++) {
           this.deMo.push(this.listMovieShowTime[n].danhSachPhim[t])
           console.log(this.listMovieShowTime[n].danhSachPhim[t]);
-          for(let x=0;x<this.listMovieShowTime[n].danhSachPhim[t].lstLichChieuTheoPhim.length;x++){
+          for (let x = 0; x < this.listMovieShowTime[n].danhSachPhim[t].lstLichChieuTheoPhim.length; x++) {
             this.lichChieu.push(this.listMovieShowTime[n].danhSachPhim[t].lstLichChieuTheoPhim[x])
             // console.log(this.listMovieShowTime[n].danhSachPhim[t].lstLichChieuTheoPhim[x])
           }
@@ -95,10 +96,12 @@ export class RapPhimComponent implements OnInit {
       }
     }
   }
-  checkLogin(){
-    const login=JSON.parse(localStorage.getItem('credentials'));
-    if(login){      
-      this.routerDatGhe="/datghe"
+  checkLogin() {
+    if (this.login) {
+      this.routerDatGhe = "/datghe"
+    } else {
+      alert("Vui lòng đăng nhập");
+      console.log("test login")
     }
   }
 }

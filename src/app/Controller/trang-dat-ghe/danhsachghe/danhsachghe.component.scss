@@ -161,31 +161,32 @@
                 .btnTicketBooking {
                     font-size: 20px;
                     position: absolute;
-                    bottom: 0;
+                    // bottom: 0;
+                    top: 0;
                     width: 100%;
                     height: 58px;
                 }
-            }
-            .pay-Ticket {
-                width: 90%;
-                transform: translateX(5%);
-                padding: 15px 0;
-                font-size: 15px;
-                font-weight: 500;
-                .pay-Ticket__error {
-                    color: #FB4226;
-                    font-size: 13px;
-                }
-                .pay-Ticket__note {
-                    padding-left: 59px;
-                    font-size: 14px;
-                    color: #4a4a4a;
-                    text-align: center;
-                    padding-top: 80px;
-                    width: 84%;
-                    img {
-                        width: 16px;
-                        height: 16px;
+                .pay-Ticket {
+                    width: 90%;
+                    transform: translateX(5%);
+                    padding: 15px 0;
+                    font-size: 15px;
+                    font-weight: 500;
+                    .pay-Ticket__error {
+                        color: #FB4226;
+                        font-size: 13px;
+                    }
+                    .pay-Ticket__note {
+                        padding-left: 59px;
+                        font-size: 14px;
+                        color: #4a4a4a;
+                        text-align: center;
+                        padding-top: 80px;
+                        width: 84%;
+                        img {
+                            width: 16px;
+                            height: 16px;
+                        }
                     }
                 }
             }

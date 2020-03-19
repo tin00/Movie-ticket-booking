@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
     Validators.minLength(5),
     Validators.maxLength(40),
     Validators.pattern("^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
-    "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
+    "ẸẺẼỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
     "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$")
   ])
   emailDKFormControl=new FormControl("",[
@@ -127,6 +127,7 @@ export class HeaderComponent implements OnInit {
         localStorage.setItem("statusBtn",JSON.stringify(this.statusbtn));
         //Sau khi đăng nhập thành công --> sẽ xóa cái trắng cái form
         this.formDangNhap.reset();
+        location.reload();
       },(err:any)=>{
         console.log(err.error);
         alert(err.error);
@@ -148,11 +149,11 @@ export class HeaderComponent implements OnInit {
       this._loginGateWay.dangKy(this.formDangKy.value).subscribe((result)=>{
         console.log(result);
         alert("Đăng ký thành công");
-        this.formDangKy.reset();
+        location.reload();
       },(err)=>{
         console.log(err.error);
         alert(err.error);
       })
-    }
+    }    
   }
 }
