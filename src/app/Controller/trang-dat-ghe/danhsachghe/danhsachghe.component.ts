@@ -13,7 +13,13 @@ registerLocaleData(localeFr, 'fr-VND')
 })
 export class DanhsachgheComponent implements OnInit {
   listPhongVe=[];
-  listGheNgoi:[]
+  hinhPhim:string;
+  dateChieu:string
+  namePhim:string;
+  timeChieu:string;
+  nameRap:string;
+  nameCumRap:string;
+  gioRap:string;
   styleRight: string;
   maLC:string
   styleRightSelect: boolean = true;
@@ -91,20 +97,16 @@ export class DanhsachgheComponent implements OnInit {
     payDV: this.payBookingFormControl
   })
   ngOnInit(): void {
-    const test = JSON.parse(localStorage.getItem("credentials"));
-    for (let item of this.listSeat) {
-      if (!item.TrangThai) {
-        this.soGheConLai++;
-      }
-    }
+    const test = JSON.parse(localStorage.getItem("credentials"));    
     if (test) {
       this.emailDatVe = test.email
       this.phoneDatVe = test.soDT
     }
+   
     this._maLichChieu.params.subscribe(result=>{
       this.maLC=result.maLichChieu;
       console.log(this.maLC);
-      this.getPhongVe(this.maLC)
+      this.getPhongVe(this.maLC)     
     })
   }
   getPhongVe(maLichChieu){
@@ -113,10 +115,19 @@ export class DanhsachgheComponent implements OnInit {
       this.listPhongVe=newPhongVe
     })
     this._phongVeGateWay.getDanhSachPhongVe(maLichChieu).subscribe((data)=>{
-      this._phongVeService.setPhongVe(data.thongTinPhim);
-      this.listGheNgoi=data.danhSachGhe;
-      console.log(this.listPhongVe)
-      console.log(this.listGheNgoi)
+      this._phongVeService.setPhongVe(data.danhSachGhe);
+      console.log(data)
+      for (let item of this.listPhongVe) {
+        if (!item.daDat) {
+          this.soGheConLai++;
+        }
+      }
+      this.nameCumRap=data.thongTinPhim.tenCumRap;
+      this.nameRap=data.thongTinPhim.tenRap;
+      this.timeChieu=data.thongTinPhim.gioChieu;
+      this.namePhim=data.thongTinPhim.tenPhim;
+      this.dateChieu=data.thongTinPhim.ngayChieu;
+      this.hinhPhim=data.thongTinPhim.hinhAnh;
     },(err)=>{
       console.log(err.error)
     })
@@ -133,16 +144,17 @@ export class DanhsachgheComponent implements OnInit {
       this.soGheDaDat++;
       this.soGheConLai--;
       this.danhSachGheDangDat.push(ghe)
-      this.costTicket += ghe.Gia
-      this.costSeat += ghe.Gia
+      this.costTicket += ghe.giaVe
+      this.costSeat += ghe.giaVe
       this.payNumber++
+      
     } else {
       this.soGheDaDat--;
       this.soGheConLai++;
       for (let index in this.danhSachGheDangDat) {
-        if (this.danhSachGheDangDat[index].SoGhe === ghe.SoGhe) {
-          this.costTicket -= this.danhSachGheDangDat[index].Gia;
-          this.costSeat -= this.danhSachGheDangDat[index].Gia;
+        if (this.danhSachGheDangDat[index].tenGhe === ghe.tenGhe) {
+          this.costTicket -= this.danhSachGheDangDat[index].giaVe;
+          this.costSeat -= this.danhSachGheDangDat[index].giaVe;
           this.danhSachGheDangDat.splice(parseInt(index), 1);
           this.payNumber--;
         }

@@ -8,9 +8,9 @@
                             <img src="https://s3img.vcdn.vn/123phim/2018/09/ee621ee05dcd4565caead4f29421b41e.png" alt="">
                         </div>
                         <div class="infor-theater">
-                            <span style="color:#9C9C9C">CGV</span>
-                            <span> - Hồ Gươm Plaza</span>
-                            <p>Hôm nay - 15:00 - Cinema 3</p>
+                            <span style="color:#9C9C9C">{{nameRap}}</span>
+                            <span> - {{nameCumRap}}</span>
+                            <p>Hôm nay - {{timeChieu}} - {{namePhim}}</p>
                         </div>
                     </div>
                     <div class="top-Content__TimeBooking">
@@ -24,14 +24,20 @@
                     <img src="../../../../assets/img/screen.png" alt="">
                 </div>
                 <div class="seat">
-                    <div class="col-6 mx-auto">
-                        <app-ghe *ngFor="let gheItem of listSeat" (emitStatus)="datGheParent($event,gheItem)" [ghe]="gheItem"></app-ghe>
+                    <div class="col-9 mx-auto">
+                        <div *ngFor="let gheItem of listPhongVe; let i =index" style="display: inline;">
+                            <app-ghe *ngIf="i<40" (emitStatus)="datGheParent($event,gheItem)" [ghe]="gheItem"></app-ghe>
+                        </div>
                     </div>
                     <hr>
                     <div class="note-Seat">
                         <div class="note-SeatItem">
                             <button mat-raised-button style="background-color:#3e515d ;" class="btn"></button>
                             <p>Chưa chọn</p>
+                        </div>
+                        <div class="note-SeatItem">
+                            <button mat-raised-button style="background-color:#FFD700 ;" class="btn"></button>
+                            <p>Ghế Vip</p>
                         </div>
                         <div class="note-SeatItem">
                             <button mat-raised-button style="background-color:#008000 ;" class="btn"></button>
@@ -55,14 +61,14 @@
                         <p>{{costTicket | currency:'VND':'symbol':'0.0':'fr-VND'}}</p>
                     </div>
                     <div class="right-Content__title">
-                        <span class="icon-C">C16</span>
-                        <span class="movie-name">Nắng 3: Lời Hứa Của Cha</span>
-                        <p style="margin-top: 5px;">CGV - Vincom Nguyễn Chí Thanh</p>
-                        <p>Hôm nay 17/03/2020 - 20:30 - Cinema 7</p>
+                        <img class="icon-C" [src]="hinhPhim" alt="">
+                        <span class="movie-name">{{namePhim}}</span>
+                        <p style="margin-top: 5px;">{{nameCumRap}}</p>
+                        <p>Hôm nay - {{dateChieu}} - {{timeChieu}}</p>
                     </div>
                     <div class="seat">
                         <span class="pr-2" style="color:#fb4226">Ghế</span>
-                        <span *ngFor=" let demo of danhSachGheDangDat" style="color:#fb4226">{{demo.SoGhe}}, </span>
+                        <span *ngFor=" let demo of danhSachGheDangDat" style="color:#fb4226">{{demo.tenGhe}}, </span>
                         <span class="seat__cost">{{costSeat | currency:'VND':'symbol':'0.0':'fr-VND'}}</span>
                     </div>
                     <div class="point-combo" (click)="showListCombo()">

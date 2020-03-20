@@ -1,6 +1,9 @@
 <ng-container *ngIf="!ghe.TrangThai;else ghedadat">
-    <button mat-raised-button [ngStyle]="{'background-color':status===true ? 'green':'#3e515d'}" (click)="datGhe()" class="btn btn-success mr-3 mb-3 btnGhe">{{ghe.SoGhe}}</button>
+    <button *ngIf="ghe.loaiGhe==='Thuong';else gheVip" mat-raised-button [ngStyle]="{'background-color':status===true ? 'green':'#3e515d'}" (click)="datGhe()" class="btn btn-success mr-3 mb-3 btnGhe">{{ghe.tenGhe}}</button>
+    <ng-template #gheVip>
+        <button mat-raised-button [ngStyle]="{'background-color':status === true ? 'green':'#FFD700'}" (click)="datGhe()" class="btn btn-warning mr-3 mb-3 btnGhe">{{ghe.tenGhe}}</button>
+    </ng-template>
 </ng-container>
 <ng-template #ghedadat>
-    <button mat-raised-button class="btn btnGheDaChon mr-3 mb-3" disabled>{{ghe.SoGhe}}</button>
+    <button mat-raised-button class="btn btnGheDaChon mr-3 mb-3" disabled>{{ghe.tenGhe}}</button>
 </ng-template>

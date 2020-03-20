@@ -24,6 +24,7 @@ export class RapPhimComponent implements OnInit {
   ngOnInit(): void {
     this.login = JSON.parse(localStorage.getItem('credentials'));
     this.getMovieTheater()
+    this.routerDatGhe = "/datghe"
   }
   // bhd1Select() {
   //   this.statusChonRap = true;
