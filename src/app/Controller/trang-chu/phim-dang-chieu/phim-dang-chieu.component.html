@@ -3,9 +3,17 @@
         <app-item-phim [phim]=itemPhim></app-item-phim>
     </div>
 </div> -->
-
-<ngb-carousel>
+<div class="owl-carousel owl-theme">
+    <div class="item" *ngFor="let itemPhim of listMoving">
+        <app-item-phim [phim]=itemPhim></app-item-phim>
+    </div>
+</div>
+<!-- <div class="item" *ngIf="listMoving.length>0">
+    <app-item-phim [phim]="listMoving" [length]="listMovingLength"></app-item-phim>
+</div> -->
+<!-- [length]=listMovingLength -->
+<!-- <ngb-carousel>
     <ng-template ngbSlide *ngFor="let itemPhim of listMoving">
         <app-item-phim [phim]=itemPhim></app-item-phim>
     </ng-template>
-</ngb-carousel>
+</ngb-carousel> -->

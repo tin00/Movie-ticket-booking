@@ -16,7 +16,7 @@ declare var $: any;
   templateUrl: "./phim-dang-chieu.component.html",
   styleUrls: ["./phim-dang-chieu.component.scss"]
 })
-export class PhimDangChieuComponent implements OnInit {
+export class PhimDangChieuComponent implements OnInit,AfterViewInit {
   listMoving: Phim[] = [
     // {tenPhim:"The Walking Dead",hinhAnh:'../../../../assets/img/sinh-nhat-chet-choc-happy-death-day-c16-15089876590397.jpg'},
     // {tenPhim:"Ferdinand",hinhAnh:'../../../../assets/img/ferdinand.jpg'},
@@ -24,7 +24,7 @@ export class PhimDangChieuComponent implements OnInit {
     // {tenPhim:"Nhóc Ma Siêu Quậy",hinhAnh:'../../../../assets/img/nhoc-ma-sieu-quay-the-little-vampire-3d-15090331183157.jpg'},
     // {tenPhim:"Trải nghiệm điểm chết",hinhAnh:'../../../../assets/img/trai-nghiem-diem-chet-flatliners-15093522963475.jpg'},
   ];
- 
+ listMovingLength:number
   constructor(
     private _movie: MovieService,
     private _phimService: PhimGateWay,
@@ -41,6 +41,7 @@ export class PhimDangChieuComponent implements OnInit {
       res => {
         console.log(res);
         this._movie.setMovieList(res);
+        this.listMovingLength=this.listMoving.length
       },
       err => {
         console.log(err);
@@ -50,6 +51,26 @@ export class PhimDangChieuComponent implements OnInit {
 
    ngOnInit() {
      this.getPhim();
-  }
+    }
+    ngAfterViewInit(){
+      setTimeout(function(){
+        $('.owl-carousel').owlCarousel({
+          loop:true,
+          margin:10,
+          nav:true,
+          responsive:{
+              0:{
+                  items:1
+              },
+              600:{
+                  items:3
+              },
+              1000:{
+                  items:4
+              }
+          }
+      })
 
+      },2000)
+  }
 }

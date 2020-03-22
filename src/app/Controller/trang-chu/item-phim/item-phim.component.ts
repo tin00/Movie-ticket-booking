@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import $ from 'jquery';
+
 declare var $:any
 @Component({
   selector: 'app-item-phim',
@@ -8,12 +9,11 @@ declare var $:any
 })
 export class ItemPhimComponent implements OnInit,AfterViewInit {
   @Input() phim;
-  constructor() { }
-
-  ngOnInit(): void {
-
+  constructor() {
   }
-  ngAfterViewInit(){
-    
+  
+  ngOnInit(): void { 
+  }
+  ngAfterViewInit(){    
   }
 }

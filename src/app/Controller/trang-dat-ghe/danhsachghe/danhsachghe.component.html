@@ -16,7 +16,8 @@
                     <div class="top-Content__TimeBooking">
                         <p class="infor1">Thời gian giữ ghế</p>
                         <p class="infor2">
-                            <countdown [config]="{leftTime: 300,format:'mm:ss'}" (event)="handleEvent($event)"></countdown>
+                            <countdown [config]="{leftTime: 300,format:'mm:ss'}" (event)="handleEvent($event)">
+                            </countdown>
                         </p>
                     </div>
                 </div>
@@ -56,7 +57,6 @@
         <div class="col-4 ">
             <div class="right-Content">
                 <div class="right-Content__form">
-                    <img class="buterfly" src="../../../../assets/img/butterfly-8814-17610-300x300.png" alt="">
                     <div class="right-Content__cost">
                         <p>{{costTicket | currency:'VND':'symbol':'0.0':'fr-VND'}}</p>
                     </div>

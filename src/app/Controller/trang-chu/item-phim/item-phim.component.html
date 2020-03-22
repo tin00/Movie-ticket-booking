@@ -1,16 +1,18 @@
-<!-- <div class="movie-item">
-    <img class=" d-block w-100" style="height: 281px;" [src]="phim.hinhAnh" alt="">
-    <p>{{phim.tenPhim}}</p>
-    <a href="#" class="iconplay youtube-link" youtubeid="sMMwjQlasTQ">
-        <i class="fa fa-play"></i>
-    </a>
-    <button mat-raised-button color="warn">MUA VÉ NGAY</button>
-</div> -->
+<div class="movie-item">
+    <img [src]="phim.hinhAnh" alt="Random second slide">
+    <div class="overlay"></div>
+    <div class="play">
+        <div>
+            <p>
+                <i class="fa fa-play-circle" aria-hidden="true"></i>
+            </p>
+            <p href="#">Đánh giá: {{phim.danhGia}} *</p>
+            <p class="newin__p">Date: {{phim.ngayKhoiChieu | date:'dd/MM/yyyy'}}</p>
+        </div>
 
-<div class="picsum-img-wrapper movie-item">
-    <img [src]="phim.hinhAnh" style="height: 281px; width: 30%; " alt="Random second slide">
-</div>
-<div class="carousel-caption movie-item__bottom">
-    <h3>{{phim.tenPhim}}</h3>
-    <button mat-raised-button color="warn" [routerLink]="['/chitietphim', phim.maPhim]">MUA VÉ NGAY</button>
+    </div>
+    <div class=" movie-item__bottom">
+        <h3>{{phim.tenPhim}}</h3>
+        <button class="button-booking" mat-raised-button color="warn" [routerLink]="['/chitietphim', phim.maPhim]">XEM CHI TIẾT</button>
+    </div>
 </div>
